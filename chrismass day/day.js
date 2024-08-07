@@ -1,21 +1,14 @@
-document.addEventListener("DOMContentLoaded", function () {
-  function daysUntilChristmas() {
-    const today = new Date();
-    //console.log(today);
-    const currentYear = today.getFullYear();
-    const christmasDate = new Date(currentYear,11, 25);
-    //console.log(christmasDate);
-    if(today > christmasDate){
-      christmasDate.setFullYear(currentYear+1);
-      //console.log(christmasDate);
-    }
-    const oneDay = 24 * 60 * 60 * 1000;
-    const daysLeft = Math.ceil((christmasDate-today)/oneDay);
-  //console.log(daysLeft);
-    return daysLeft;
-  }
-  const daysLeftElement = document.getElementById('days-left');
-  const daysLeft = daysUntilChristmas();
-  //console.log(daysLeftElement);
-  daysLeftElement.innerHTML= `${daysLeft} days left until Christmas!`;
-});
+const today = new Date();
+//console.log(today);
+const Christmas = new Date(today.getFullYear(), 11, 25);
+//console.log(Christmas);
+if (today.getMonth() == 11 && today.getDate() > 25) {
+  Christmas.setFullYear(Christmas.getFullYear()+1);
+}
+ 
+const oneDay =1000*60*60*24;
+const daydiff =Math.ceil((Christmas.getTime()-today.getTime())/(oneDay))
+
+const daysleft = document.getElementById('days-left')
+daysleft.innerHTML =  `${daydiff} days left until Christmas!`;
+
